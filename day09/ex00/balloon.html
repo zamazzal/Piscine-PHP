@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>balloon</title>
+    <style>
+        #balloon{
+            background : red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="balloon"></div>
+    <script>
+        var colors = new Array("red", "green", "blue");
+        var balloon = document.getElementById('balloon');
+        
+        balloon.style.height = "200px";
+        balloon.style.width = "200px";
+        var x = 0;
+        function onclickx()
+        {
+            var w = parseInt(balloon.style.width);
+
+            w = w + 10;
+            x = x + 1;
+            if (x > 2)
+                x = 0;
+            if (w > 420)
+                w = 200;
+            balloon.style.background = colors[x];
+            balloon.style.width = w.toString() + "px";
+            balloon.style.height = w.toString() + "px";
+        }
+        function onmouseoutx()
+        {
+            var w = parseInt(balloon.style.width);
+
+            w = w - 5;
+            if (x > 0)
+                x = x - 1;
+            else
+                x = 2;
+            if (w >= 200)
+            {
+                balloon.style.width = w.toString() + "px";
+                balloon.style.height = w.toString() + "px";
+            }
+            balloon.style.background = colors[x];
+        }
+        balloon.onclick = onclickx;
+        balloon.onmouseout = onmouseoutx;
+    </script>
+</body>
+</html>

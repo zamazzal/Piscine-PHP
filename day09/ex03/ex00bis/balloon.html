@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>balloon</title>
+    <style>
+        #balloon{
+            background : red;
+            border-radius: 50%;
+        }
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="balloon"></div>
+    <script>
+        var colors = new Array("red", "green", "blue");
+        
+        $("#balloon").css("width", "200px");
+        $("#balloon").css("height", "200px");
+        var x = 0;
+        function onclickx()
+        {
+            w = parseInt($(this).width()) + 10;
+            x = x + 1;
+            if (x > 2)
+                x = 0;
+            if (w > 420)
+                w = 200;
+            $(this).css("background", colors[x]);
+            $(this).css("height", w.toString() + "px");
+            $(this).css("width", w.toString() + "px");
+        }
+        function onmouseoutx()
+        {
+            w = parseInt($(this).width()) - 5;
+            x = (x > 0) ? x - 1 : 2;
+            if (w >= 200)
+            {
+                $(this).css("height", w.toString() + "px");
+                $(this).css("width", w.toString() + "px");
+            }
+            $(this).css("background", colors[x]);
+        }
+        $("#balloon").click(onclickx);
+        $("#balloon").mouseout(onmouseoutx);
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <title>calc</title>
+    <style>
+        #cal{
+            top: 7%;
+            margin: auto;
+            width: 1000px;
+            height: 500px;
+            background: #808080;
+            border-style: solid;
+            border-radius: 2%;
+        }
+        .input{
+            margin-left: 5%;
+            margin-right: 5%;
+            background: #867979;
+            border-style: solid;
+            border-radius: 2%;
+            width: 90%;
+            height: 12%;
+            text-align: center;
+            font-size: 30;
+        }
+        #ops{
+            margin-left: 35%;
+            margin-right: 5%;
+            width: 30%;
+            height: 10%;
+            text-align: center;
+        }
+        #calc{
+            width: 50%;
+            height: 10%;
+            margin-left: 25%;
+            margin-right: 5%;
+            margin-top: 10%;
+            border-style: solid;
+            border-radius: 3%;
+        }
+    </style>
+</head>
+<body>
+    <div id="cal">
+        <input id="val1" class="input" style="margin-top: 5%;margin-bottom: 2%;" type="text" name="var1">
+        <select id="ops">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+              </select>
+        <input id="val2" class="input" style="margin-top: 2%;margin-bottom: 5%;"  type="text" name="var1">
+        <button id="calc" type="button" name="done">Try me!</button>
+    </div>
+    <script>
+        function calcf()
+        {
+            var oper = document.getElementById("ops").value;
+            var org1 = document.getElementById("val1").value;
+            var org2 = document.getElementById("val2").value;
+            var var1 = parseInt(org1);
+            var var2 = parseInt(org2);
+            var original1 = org1.toString();
+            var original2 = org2.toString();
+			var reg = new RegExp("^\\+?[0-9]+$");
+
+            if (var1 >= 0 && var2 >= 0 && var1 == original1 && original2 == var2 && reg.test(org2) && reg.test(org1))
+            {
+                if (oper == '+')
+                {
+                    var x = var1 + var2;
+                    alert(x);
+                    console.log(x);
+                }
+                else if (oper == '-')
+                {
+                    var x = var1 - var2;
+                    alert(x);
+                    console.log(x);
+                }
+                else if (oper == '*')
+                {
+                    var x = var1 * var2;
+                    alert(x);
+                    console.log(x);
+                }
+                else if (oper == '/')
+                {
+                    if (var2 == 0)
+                        x = 'It’s over 9000!';
+                    else
+                        var x = var1 / var2;
+                    alert(x);
+                    console.log(x);
+                }
+                else if (oper == '%')
+                {
+                    if (var2 == 0)
+                        x = 'It’s over 9000!';
+                    else
+                        var x = var1 % var2;
+                    alert(x);
+                    console.log(x);
+               }
+            }
+            else
+            {
+                alert('Error :(');
+            }
+        }
+        calc.onclick = calcf;
+        setInterval(function(){ alert("Please, use me..."); }, 30000);
+    </script>
+</body>
+</html>
